@@ -20,14 +20,16 @@ class MascotaController extends Controller
 
     public function store(Request $request)
     {
-        Mascota::create($request->validate([
+        $validatedData = $request->validate([
             'Nombre' => 'required|string|max:255',
             'Raza' => 'required|string|max:255',
             'Género' => 'required|string|max:255',
             'NombreDueño' => 'required|string|max:255',
             'telefonoDueño' => 'required|string|max:15',
-        ]));
-        
+        ]);
+
+        Mascota::create($validatedData);
+
         return redirect()->route('mascotas.index')->with('success', 'Mascota creada exitosamente.');
     }
 
@@ -38,14 +40,16 @@ class MascotaController extends Controller
 
     public function update(Request $request, Mascota $mascota)
     {
-        $mascota->update($request->validate([
+        $validatedData = $request->validate([
             'Nombre' => 'required|string|max:255',
             'Raza' => 'required|string|max:255',
             'Género' => 'required|string|max:255',
             'NombreDueño' => 'required|string|max:255',
             'telefonoDueño' => 'required|string|max:15',
-        ]));
-        
+        ]);
+
+        $mascota->update($validatedData);
+
         return redirect()->route('mascotas.index')->with('success', 'Mascota actualizada exitosamente.');
     }
 
@@ -55,3 +59,4 @@ class MascotaController extends Controller
         return redirect()->route('mascotas.index')->with('success', 'Mascota eliminada exitosamente.');
     }
 }
+
