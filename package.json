@@ -2,7 +2,12 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "development": "webpack --mode development",
+        "watch": "npm run watch",
+        "watch-poll": "npm run watch -- --watch-options-poll=1000",
+        "hot": "webpack-dev-server --hot --inline --progress --colors",
+        "prod": "npm run production"
     },
     "devDependencies": {
         "axios": "^1.1.2",
@@ -10,5 +15,8 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "firebase": "^10.13.2"
     }
 }
